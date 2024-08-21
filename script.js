@@ -1,10 +1,10 @@
 const trustedRekberLinks = {
-    "https://www.facebook.com/mraihanbimoarifi/": "bimoarif",
-    "https://www.facebook.com/RekberBimo": "Rekbim",
-    "https://www.facebook.com/patrickhiunediaa": "Pattrrick Darnell",
-    "https://www.facebook.com/ImeL.Rinoa": "Imel Anggraini",
-    "https://www.facebook.com/aartama": "Arya Pratama",
-    "https://www.facebook.com/tokovalorants": "Toko Valorant"
+    "https://www.facebook.com/mraihanbimoarifi/",
+    "https://www.facebook.com/RekberBimo",
+    "https://www.facebook.com/patrickhiunediaa",
+    "https://www.facebook.com/ImeL.Rinoa",
+    "https://www.facebook.com/aartama",
+    "https://www.facebook.com/tokovalorants"
 };
 
 const scammerRekberLinks = [
