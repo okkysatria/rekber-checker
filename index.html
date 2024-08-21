@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: #f0f0f0;
             color: #333;
             text-align: center;
             padding: 20px;
@@ -15,28 +15,25 @@
         h1 {
             color: #2196F3;
         }
-        h2 {
-            color: #333;
-            margin-top: 20px;
-        }
         input, button {
             margin: 10px;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             width: 80%;
-            max-width: 400px;
+            max-width: 300px; /* Adjusted max-width for input and button */
+            font-size: 14px;  /* Adjusted font size */
         }
         button {
-            background-color: #2196F3;
+            background: #2196F3;
             color: white;
             cursor: pointer;
             border: none;
-            padding: 12px;
-            width: auto;
+            width: auto; /* Button width will be auto */
+            padding: 10px 20px; /* Adjusted padding */
         }
         button:hover {
-            background-color: #0b7dda;
+            background: #0b7dda;
         }
         .result {
             margin: 20px auto;
@@ -44,19 +41,22 @@
             border-radius: 5px;
             font-weight: bold;
             width: 80%;
-            max-width: 400px;
+            max-width: 300px; /* Adjusted max-width for result */
         }
         .trusted {
             color: green;
-            background-color: #d4edda;
+            background: #d4edda;
         }
         .scammer {
             color: red;
-            background-color: #f8d7da;
+            background: #f8d7da;
         }
         .no-record {
             color: #666;
-            background-color: #f0f0f0;
+            background: #f0f0f0;
+        }
+        .error {
+            color: red;
         }
     </style>
 </head>
@@ -64,16 +64,17 @@
     <h1>Scammer Checker</h1>
     
     <h2>Periksa Profil Facebook</h2>
-    <input type="text" id="profileUrl" placeholder="Masukkan URL Profil Facebook" autocomplete="off">
+    <input type="text" id="profileUrl" placeholder="Masukkan URL Profil Facebook">
     <button onclick="checkProfile()">Periksa Profil</button>
     <div id="result" class="result"></div>
+    <div id="profileError" class="error"></div>
     
     <h2>Periksa Dompet Digital dan Rekening Bank</h2>
-    <input type="text" id="accountId" placeholder="Masukkan ID Dompet Digital atau Nomor Rekening Bank" autocomplete="off">
+    <input type="text" id="accountId" placeholder="Masukkan ID Dompet Digital atau Nomor Rekening Bank">
     <button onclick="checkAccount()">Periksa Akun</button>
     <div id="accountResult" class="result"></div>
+    <div id="accountError" class="error"></div>
 
-    <!-- Load JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
