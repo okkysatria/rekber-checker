@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scammer Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #2196F3;
+        }
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 400px;
+        }
+        button {
+            background-color: #2196F3;
+            color: white;
+            cursor: pointer;
+            border: none;
+            padding: 12px;
+            width: auto;
+        }
+        button:hover {
+            background-color: #0b7dda;
+        }
+        .result {
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            width: 80%;
+            max-width: 400px;
+        }
+        .safe {
+            color: green;
+            background-color: #d4edda;
+        }
+        .warning {
+            color: red;
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scammer Checker</h1>
+    
+    <h2>Periksa Profil Facebook</h2>
+    <input type="text" id="profileUrl" placeholder="Masukkan URL Profil Facebook">
+    <button onclick="checkProfile()">Periksa Profil</button>
+    <div id="result" class="result"></div>
+    
+    <h2>Periksa Dompet Digital dan Rekening Bank</h2>
+    <input type="text" id="accountId" placeholder="Masukkan ID Dompet Digital atau Nomor Rekening Bank">
+    <button onclick="checkAccount()">Periksa Akun</button>
+    <div id="accountResult" class="result"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
