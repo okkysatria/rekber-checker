@@ -30,21 +30,31 @@ const trustedAccounts = [
 ];
 
 const scammerAccounts = [
-    "0382007060", // BCA Syariah atas nama Mochamad Akbar Erlangga
-    "08111000048" // Dana
+    "0382007060",
+    "08111000048"
 ];
 
+function sanitizeInput(input) {
+    return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function validateUrl(url) {
+    const urlPattern = /^https?:\/\/[^\s/$.?#].[^\s]*$/i;
+    return urlPattern.test(url);
+}
+
 function normalizeUrl(url) {
-    // Menghapus trailing '/' jika ada
     return url.endsWith('/') ? url.slice(0, -1) : url;
 }
 
 function checkProfile() {
-    const userInput = document.getElementById('profileUrl').value.trim();
+    const userInput = sanitizeInput(document.getElementById('profileUrl').value.trim());
+    if (!validateUrl(userInput)) {
+        alert("URL tidak valid");
+        return;
+    }
     const resultElement = document.getElementById('result');
-
-    // Normalisasi URL
-    let normalizedInput = normalizeUrl(userInput);
+    const normalizedInput = normalizeUrl(userInput);
 
     if (trustedRekberLinks.includes(normalizedInput)) {
         resultElement.textContent = "Trusted";
@@ -53,13 +63,17 @@ function checkProfile() {
         resultElement.textContent = "SCAMMER, LARI COK";
         resultElement.className = 'result scammer';
     } else {
-        resultElement.textContent = "Tidak ada track record";
+        resultElement.textContent = "Tidak Ada Track Record";
         resultElement.className = 'result no-record';
     }
 }
 
 function checkAccount() {
-    const userInput = document.getElementById('accountId').value.trim();
+    const userInput = sanitizeInput(document.getElementById('accountId').value.trim());
+    if (!userInput) {
+        alert("Masukkan ID atau nomor rekening");
+        return;
+    }
     const resultElement = document.getElementById('accountResult');
 
     if (trustedAccounts.includes(userInput)) {
@@ -69,7 +83,7 @@ function checkAccount() {
         resultElement.textContent = "SCAMMER, LARI COK";
         resultElement.className = 'result scammer';
     } else {
-        resultElement.textContent = "Tidak ada track record";
+        resultElement.textContent = "Tidak Ada Track Record";
         resultElement.className = 'result no-record';
     }
 }
