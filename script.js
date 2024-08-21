@@ -49,12 +49,24 @@ function normalizeUrl(url) {
 
 function checkProfile() {
     const userInput = sanitizeInput(document.getElementById('profileUrl').value.trim());
+    const resultElement = document.getElementById('result');
+    const errorElement = document.getElementById('profileError');
+
+    // Clear previous results and errors
+    resultElement.textContent = "";
+    errorElement.textContent = "";
+
     if (!validateUrl(userInput)) {
-        alert("URL tidak valid");
+        errorElement.textContent = "URL tidak valid";
         return;
     }
-    const resultElement = document.getElementById('result');
+
     const normalizedInput = normalizeUrl(userInput);
+
+    if (!normalizedInput.startsWith("https://www.facebook.com")) {
+        errorElement.textContent = "URL bukan profil Facebook";
+        return;
+    }
 
     if (trustedRekberLinks.includes(normalizedInput)) {
         resultElement.textContent = "Trusted";
@@ -70,11 +82,22 @@ function checkProfile() {
 
 function checkAccount() {
     const userInput = sanitizeInput(document.getElementById('accountId').value.trim());
-    if (!userInput) {
-        alert("Masukkan ID atau nomor rekening");
+    const resultElement = document.getElementById('accountResult');
+    const errorElement = document.getElementById('accountError');
+
+    // Clear previous results and errors
+    resultElement.textContent = "";
+    errorElement.textContent = "";
+
+    if (validateUrl(userInput)) {
+        errorElement.textContent = "URL tidak boleh dimasukkan di kolom Dompet Digital atau Rekening Bank";
         return;
     }
-    const resultElement = document.getElementById('accountResult');
+
+    if (!userInput) {
+        errorElement.textContent = "Masukkan ID atau nomor rekening";
+        return;
+    }
 
     if (trustedAccounts.includes(userInput)) {
         resultElement.textContent = "Trusted";
