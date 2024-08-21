@@ -1,11 +1,11 @@
-const trustedRekberLinks = {
-    "https://www.facebook.com/mraihanbimoarifi/": "bimoarif",
-    "https://www.facebook.com/RekberBimo": "Rekbim",
-    "https://www.facebook.com/patrickhiunediaa": "Pattrrick Darnell",
-    "https://www.facebook.com/ImeL.Rinoa": "Imel Anggraini",
-    "https://www.facebook.com/aartama": "Arya Pratama",
-    "https://www.facebook.com/tokovalorants": "Toko Valorant"
-};
+const trustedRekberLinks = [
+    "https://www.facebook.com/mraihanbimoarifi",
+    "https://www.facebook.com/RekberBimo",
+    "https://www.facebook.com/patrickhiunediaa",
+    "https://www.facebook.com/ImeL.Rinoa",
+    "https://www.facebook.com/aartama",
+    "https://www.facebook.com/tokovalorants"
+];
 
 const scammerRekberLinks = [
     "https://www.facebook.com/groups/602713303725760/user/100068922445885",
@@ -26,7 +26,7 @@ const scammerRekberLinks = [
 ];
 
 const trustedAccounts = [
-    "085811328725"
+    "6265094299"
 ];
 
 const scammerAccounts = [
@@ -34,24 +34,26 @@ const scammerAccounts = [
     "08111000048" // Dana
 ];
 
+function normalizeUrl(url) {
+    // Menghapus trailing '/' jika ada
+    return url.endsWith('/') ? url.slice(0, -1) : url;
+}
+
 function checkProfile() {
     const userInput = document.getElementById('profileUrl').value.trim();
     const resultElement = document.getElementById('result');
 
-    // Pastikan URL berakhir dengan '/' untuk pencocokan yang tepat
-    let normalizedInput = userInput;
-    if (!normalizedInput.endsWith('/')) {
-        normalizedInput += '/';
-    }
+    // Normalisasi URL
+    let normalizedInput = normalizeUrl(userInput);
 
-    if (trustedRekberLinks.hasOwnProperty(normalizedInput)) {
-        resultElement.textContent = `Trusted: ${trustedRekberLinks[normalizedInput]} (warna hijau)`;
+    if (trustedRekberLinks.includes(normalizedInput)) {
+        resultElement.textContent = "Trusted";
         resultElement.className = 'result trusted';
     } else if (scammerRekberLinks.includes(normalizedInput)) {
-        resultElement.textContent = "Scammer (warna merah)";
+        resultElement.textContent = "SCAMMER, LARI COK";
         resultElement.className = 'result scammer';
     } else {
-        resultElement.textContent = "Tidak ada track record (abu-abu/putih)";
+        resultElement.textContent = "Tidak ada track record";
         resultElement.className = 'result no-record';
     }
 }
@@ -61,13 +63,13 @@ function checkAccount() {
     const resultElement = document.getElementById('accountResult');
 
     if (trustedAccounts.includes(userInput)) {
-        resultElement.textContent = "Trusted (warna hijau)";
+        resultElement.textContent = "Trusted";
         resultElement.className = 'result trusted';
     } else if (scammerAccounts.includes(userInput)) {
-        resultElement.textContent = "Scammer (warna merah)";
+        resultElement.textContent = "SCAMMER, LARI COK";
         resultElement.className = 'result scammer';
     } else {
-        resultElement.textContent = "Tidak ada track record (abu-abu/putih)";
+        resultElement.textContent = "Tidak ada track record";
         resultElement.className = 'result no-record';
     }
 }
