@@ -1,36 +1,66 @@
-const originalRekberLinks = [
-    "https://www.facebook.com/groups/229013498938555/user/100000274846853",
-    "https://www.facebook.com/groups/602713303725760/user/100068922445885"
+const trustedRekberLinks = {
+    "https://www.facebook.com/mraihanbimoarifi/": "bimoarif",
+    "https://www.facebook.com/RekberBimo": "Rekbim",
+    "https://www.facebook.com/patrickhiunediaa": "Pattrrick Darnell",
+    "https://www.facebook.com/ImeL.Rinoa": "Imel Anggraini",
+    "https://www.facebook.com/aartama": "Arya Pratama",
+    "https://www.facebook.com/tokovalorants": "Toko Valorant"
+};
+
+const scammerRekberLinks = [
+    "https://www.facebook.com/groups/602713303725760/user/100068922445885",
+    "https://www.facebook.com/61564003316106",
+    "https://www.facebook.com/groups/groups.rekbims",
+    "https://www.facebook.com/100046935469044",
+    "https://www.facebook.com/100087531587418",
+    "https://www.facebook.com/groups/rekberbyxylous",
+    "https://www.facebook.com/100090262387386",
+    "https://www.facebook.com/100001410816702",
+    "https://www.facebook.com/100084295721416",
+    "https://www.facebook.com/100027396799418",
+    "https://www.facebook.com/100039131837095",
+    "https://www.facebook.com/100082214996855",
+    "https://www.facebook.com/100077990753579",
+    "https://www.facebook.com/100078395115053",
+    "https://www.facebook.com/61552783995978"
 ];
 
-const originalAccounts = [
-    "085811328725",
-    "0382007060",
-    // Add more digital wallets and bank account numbers as needed
+const trustedAccounts = [
+    "085811328725"
+];
+
+const scammerAccounts = [
+    "0382007060"
 ];
 
 function checkProfile() {
     const userInput = document.getElementById('profileUrl').value.trim();
     const resultElement = document.getElementById('result');
-    
-    if (originalRekberLinks.includes(userInput)) {
-        resultElement.textContent = "Link ini adalah profil Facebook yang asli.";
-        resultElement.className = 'result safe';
+
+    if (userInput in trustedRekberLinks) {
+        resultElement.textContent = `Trusted: ${trustedRekberLinks[userInput]} `;
+        resultElement.className = 'result trusted';
+    } else if (scammerRekberLinks.includes(userInput)) {
+        resultElement.textContent = "SCAMMER, PENIPU LARI COK";
+        resultElement.className = 'result scammer';
     } else {
-        resultElement.textContent = "Link ini bukan profil Facebook yang asli!";
-        resultElement.className = 'result warning';
+        resultElement.textContent = "Tidak ada track record";
+        resultElement.className = 'result no-record';
     }
 }
 
 function checkAccount() {
     const userInput = document.getElementById('accountId').value.trim();
     const resultElement = document.getElementById('accountResult');
-    
-    if (originalAccounts.includes(userInput)) {
-        resultElement.textContent = "Akun ini adalah dompet digital atau rekening bank yang asli.";
-        resultElement.className = 'result safe';
+
+    if (trustedAccounts.includes(userInput)) {
+        resultElement.textContent = "Trusted";
+        resultElement.className = 'result trusted';
+    } else if (scammerAccounts.includes(userInput)) {
+        resultElement.textContent = "SCAMMER, JANGAN DILANJUTKAN";
+        resultElement.className = 'result scammer';
     } else {
-        resultElement.textContent = "Akun ini bukan dompet digital atau rekening bank yang asli!";
-        resultElement.className = 'result warning';
+        resultElement.textContent = "Tidak ada track record";
+        resultElement.className = 'result no-record';
     }
 }
