@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,13 +46,17 @@
             width: 80%;
             max-width: 400px;
         }
-        .safe {
+        .trusted {
             color: green;
             background-color: #d4edda;
         }
-        .warning {
+        .scammer {
             color: red;
             background-color: #f8d7da;
+        }
+        .no-record {
+            color: #666;
+            background-color: #f0f0f0;
         }
     </style>
 </head>
@@ -60,15 +64,16 @@
     <h1>Scammer Checker</h1>
     
     <h2>Periksa Profil Facebook</h2>
-    <input type="text" id="profileUrl" placeholder="Masukkan URL Profil Facebook">
+    <input type="text" id="profileUrl" placeholder="Masukkan URL Profil Facebook" autocomplete="off">
     <button onclick="checkProfile()">Periksa Profil</button>
     <div id="result" class="result"></div>
     
     <h2>Periksa Dompet Digital dan Rekening Bank</h2>
-    <input type="text" id="accountId" placeholder="Masukkan ID Dompet Digital atau Nomor Rekening Bank">
+    <input type="text" id="accountId" placeholder="Masukkan ID Dompet Digital atau Nomor Rekening Bank" autocomplete="off">
     <button onclick="checkAccount()">Periksa Akun</button>
     <div id="accountResult" class="result"></div>
-    
+
+    <!-- Load JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
