@@ -25,6 +25,15 @@ const scammerRekberLinks = [
     "https://www.facebook.com/61552783995978"
 ];
 
+const trustedAccounts = [
+    "085811328725"
+];
+
+const scammerAccounts = [
+    "0382007060", // BCA Syariah atas nama Mochamad Akbar Erlangga
+    "08111000048" // Dana
+];
+
 function checkProfile() {
     const userInput = document.getElementById('profileUrl').value.trim();
     const resultElement = document.getElementById('result');
